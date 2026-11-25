@@ -1,0 +1,299 @@
+/* ==========================================================================
+   TRACE DESIGN TOKENS v1.0.0  (light theme only)
+   Tier 1  --ref-*        raw values. NEVER used in components.
+   Tier 2  --color-*, --space-*, --radius-*, --text-* ...  semantic tokens (Tailwind utilities)
+   Tier 3  --button-*, --input-*, --chip-* ...  component tokens (optional indirection)
+   Rule: components reference tier 2 or 3 only. No hex, px or magic numbers in components.
+   ========================================================================== */
+
+@import "tailwindcss";
+
+/* ---------- TIER 1: REFERENCE ---------- */
+:root {
+  color-scheme: light;
+
+  /* paper (warm neutrals) */
+  --ref-paper-0:   #FFFFFF;
+  --ref-paper-50:  #FBFBF9;
+  --ref-paper-100: #F4F4F0;
+  --ref-paper-200: #E7E5E0;
+  --ref-paper-300: #D2CFC8;
+
+  /* ink (text and control neutrals) */
+  --ref-ink-300: #9AA1AB;
+  --ref-ink-400: #7A828D;
+  --ref-ink-500: #5B6470;
+  --ref-ink-700: #3A4048;
+  --ref-ink-900: #111418;
+
+  /* indigo (brand and action) */
+  --ref-indigo-50:  #EEF0FF;
+  --ref-indigo-100: #E0E4FF;
+  --ref-indigo-600: #4F46E5;
+  --ref-indigo-700: #4338CA;
+  --ref-indigo-800: #3730A3;
+
+  /* emerald (strong) */
+  --ref-emerald-50:  #ECFDF5;
+  --ref-emerald-200: #A7F3D0;
+  --ref-emerald-600: #059669;
+  --ref-emerald-700: #047857;
+
+  /* amber (caution) */
+  --ref-amber-50:  #FFFBEB;
+  --ref-amber-200: #FDE68A;
+  --ref-amber-600: #D97706;
+  --ref-amber-800: #92400E;
+
+  /* red (risk) */
+  --ref-red-50:  #FEF2F2;
+  --ref-red-200: #FECACA;
+  --ref-red-600: #DC2626;
+  --ref-red-700: #B91C1C;
+
+  /* space (4px base) */
+  --ref-space-0: 0;
+  --ref-space-1: 0.25rem;
+  --ref-space-2: 0.5rem;
+  --ref-space-3: 0.75rem;
+  --ref-space-4: 1rem;
+  --ref-space-6: 1.5rem;
+  --ref-space-8: 2rem;
+  --ref-space-12: 3rem;
+  --ref-space-16: 4rem;
+  --ref-space-24: 6rem;
+
+  /* radius */
+  --ref-radius-sm: 0.25rem;
+  --ref-radius-md: 0.375rem;
+  --ref-radius-lg: 0.625rem;
+  --ref-radius-xl: 0.75rem;
+  --ref-radius-full: 999px;
+
+  /* duration and easing */
+  --ref-duration-150: 150ms;
+  --ref-duration-250: 250ms;
+  --ref-duration-600: 600ms;
+  --ref-ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ---------- TIER 2: SEMANTIC (Tailwind utilities are generated from these) ---------- */
+@theme inline {
+  /* surfaces */
+  --color-surface-page:   var(--ref-paper-50);
+  --color-surface-raised: var(--ref-paper-0);
+  --color-surface-sunken: var(--ref-paper-100);
+  --color-surface-selected: var(--ref-indigo-50);
+
+  /* borders */
+  --color-border-subtle:  var(--ref-paper-200);   /* rules and dividers (decorative) */
+  --color-border-default: var(--ref-paper-300);   /* dropzone and quiet outlines (decorative) */
+  --color-border-control: var(--ref-ink-400);     /* inputs and selects (3:1 minimum) */
+
+  /* content (text and icons) */
+  --color-content-primary:   var(--ref-ink-900);
+  --color-content-secondary: var(--ref-ink-700);
+  --color-content-tertiary:  var(--ref-ink-500);
+  --color-content-disabled:  var(--ref-ink-300);  /* disabled only, never essential text */
+  --color-content-inverse:   var(--ref-paper-0);
+  --color-content-link:      var(--ref-indigo-600);
+  --color-content-on-action: var(--ref-paper-0);
+
+  /* actions */
+  --color-action-primary:         var(--ref-indigo-600);
+  --color-action-primary-hover:   var(--ref-indigo-700);
+  --color-action-primary-active:  var(--ref-indigo-800);
+  --color-action-subtle:          var(--ref-indigo-50);
+  --color-action-subtle-hover:    var(--ref-indigo-100);
+  --color-action-focus-ring:      var(--ref-indigo-600);
+
+  /* status: strong / caution / risk (content = text+icon, surface = wash, mark = bars+markers, border = chip outline) */
+  --color-status-strong-content:  var(--ref-emerald-700);
+  --color-status-strong-surface:  var(--ref-emerald-50);
+  --color-status-strong-mark:     var(--ref-emerald-600);
+  --color-status-strong-border:   var(--ref-emerald-200);
+  --color-status-caution-content: var(--ref-amber-800);
+  --color-status-caution-surface: var(--ref-amber-50);
+  --color-status-caution-mark:    var(--ref-amber-600);
+  --color-status-caution-border:  var(--ref-amber-200);
+  --color-status-risk-content:    var(--ref-red-700);
+  --color-status-risk-surface:    var(--ref-red-50);
+  --color-status-risk-mark:       var(--ref-red-600);
+  --color-status-risk-border:     var(--ref-red-200);
+
+  /* typography: families */
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* typography: roles (size, line-height, tracking, weight) */
+  --text-display: 3.5rem;   --text-display--line-height: 3.75rem;  --text-display--letter-spacing: -0.02em; --text-display--font-weight: 600;
+  --text-heading-1: 2.25rem; --text-heading-1--line-height: 2.625rem; --text-heading-1--letter-spacing: -0.02em; --text-heading-1--font-weight: 600;
+  --text-heading-2: 1.375rem; --text-heading-2--line-height: 1.875rem; --text-heading-2--letter-spacing: -0.02em; --text-heading-2--font-weight: 600;
+  --text-heading-3: 1.0625rem; --text-heading-3--line-height: 1.625rem; --text-heading-3--letter-spacing: -0.01em; --text-heading-3--font-weight: 600;
+  --text-body: 1rem;         --text-body--line-height: 1.625rem;
+  --text-small: 0.875rem;    --text-small--line-height: 1.375rem;
+  --text-eyebrow: 0.75rem;   --text-eyebrow--line-height: 1rem; --text-eyebrow--letter-spacing: 0.08em; --text-eyebrow--font-weight: 500;
+  --text-metric-lg: 3rem;    --text-metric-lg--line-height: 3.25rem; --text-metric-lg--font-weight: 500;
+  --text-metric-sm: 0.875rem; --text-metric-sm--line-height: 1.25rem; --text-metric-sm--font-weight: 500;
+
+  /* space (semantic) */
+  --spacing: 0.25rem;                       /* Tailwind base: p-4 = 16px */
+  --space-stack-xs: var(--ref-space-2);
+  --space-stack-sm: var(--ref-space-3);
+  --space-stack-md: var(--ref-space-4);
+  --space-stack-lg: var(--ref-space-8);
+  --space-section: var(--ref-space-16);     /* between page sections */
+  --space-gutter-page: var(--ref-space-6);  /* page gutters (mobile) */
+  --space-inline-sm: var(--ref-space-2);
+  --space-inline-md: var(--ref-space-4);
+
+  /* radius (semantic) */
+  --radius-control:  var(--ref-radius-md);
+  --radius-chip:     var(--ref-radius-full);
+  --radius-dropzone: var(--ref-radius-lg);
+  --radius-overlay:  var(--ref-radius-xl);
+
+  /* elevation: only overlays have shadow */
+  --shadow-overlay: 0 8px 30px rgba(17, 20, 24, 0.10);
+
+  /* motion */
+  --duration-fast: var(--ref-duration-150);
+  --duration-medium: var(--ref-duration-250);
+  --duration-slow: var(--ref-duration-600);
+  --ease-standard: var(--ref-ease-out);
+
+  /* breakpoints */
+  --breakpoint-sm: 40rem;
+  --breakpoint-lg: 64rem;
+}
+
+/* ---------- Responsive overrides for type and spacing ---------- */
+@media (min-width: 64rem) {
+  :root { --space-gutter-page: var(--ref-space-12); }
+}
+@media (max-width: 39.99rem) {
+  @theme inline {
+    --text-display: 2.5rem; --text-display--line-height: 2.75rem;
+    --text-heading-1: 1.875rem; --text-heading-1--line-height: 2.25rem;
+    --text-metric-lg: 2.5rem; --text-metric-lg--line-height: 2.75rem;
+    --space-section: var(--ref-space-12);
+  }
+}
+
+/* ---------- TIER 3: COMPONENT TOKENS ---------- */
+:root {
+  /* layout */
+  --size-content-max: 70rem;      /* 1120px */
+  --size-reading-max: 42.5rem;    /* 680px */
+  --size-touch-min: 2.75rem;      /* 44px */
+
+  /* z-index */
+  --z-sticky: 10;
+  --z-bar: 20;
+  --z-overlay: 40;
+  --z-toast: 50;
+
+  /* button */
+  --button-height: var(--size-touch-min);
+  --button-height-compact: 2.25rem;
+  --button-radius: var(--radius-control);
+  --button-padding-x: var(--ref-space-4);
+  --button-font-weight: 500;
+  --button-primary-bg: var(--color-action-primary);
+  --button-primary-bg-hover: var(--color-action-primary-hover);
+  --button-primary-bg-active: var(--color-action-primary-active);
+  --button-primary-text: var(--color-content-on-action);
+  --button-secondary-border: var(--color-border-control);
+  --button-secondary-bg-hover: var(--color-surface-sunken);
+  --button-danger-color: var(--color-status-risk-content);
+  --button-danger-bg-hover: var(--color-status-risk-content);
+
+  /* input */
+  --input-height: var(--size-touch-min);
+  --input-radius: var(--radius-control);
+  --input-bg: var(--color-surface-raised);
+  --input-border: var(--color-border-control);
+  --input-border-focus: var(--color-action-focus-ring);
+  --input-border-error: var(--color-status-risk-content);
+
+  /* chip */
+  --chip-radius: var(--radius-chip);
+  --chip-height: 1.5rem;
+  --chip-padding-x: var(--ref-space-3);
+
+  /* rail (meters) */
+  --rail-height: 0.375rem;        /* 6px */
+  --rail-track: var(--color-surface-sunken);
+  --rail-marker: var(--color-content-primary);
+
+  /* row (list rows) */
+  --row-min-height: 4.5rem;       /* 72px */
+  --row-border: var(--color-border-subtle);
+  --row-bg-hover: var(--color-surface-sunken);
+
+  /* dropzone */
+  --dropzone-height: 10rem;
+  --dropzone-border: var(--color-border-default);
+  --dropzone-border-active: var(--color-action-primary);
+  --dropzone-bg-active: var(--color-surface-selected);
+
+  /* overlays */
+  --dialog-radius: var(--radius-overlay);
+  --dialog-shadow: var(--shadow-overlay);
+  --toast-bg: var(--ref-ink-900);
+  --toast-text: var(--color-content-inverse);
+
+  /* focus */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--color-action-focus-ring);
+}
+
+/* ---------- Base ---------- */
+html { background: var(--color-surface-page); }
+body {
+  background: var(--color-surface-page);
+  color: var(--color-content-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+h1, h2, h3 { color: var(--color-content-primary); }
+.font-mono, [data-numeric] { font-variant-numeric: tabular-nums; }
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Responsive breakpoint helpers */
+@media (min-width: 768px) {
+  .md\:hidden { display: none !important; }
+  .md\:flex { display: flex !important; }
+}
+@media (max-width: 767px) {
+  .md\:flex { display: none !important; }
+}
+
+/* ---------- shadcn variable bridge (keeps shadcn primitives on-brand) ---------- */
+:root {
+  --background: var(--color-surface-page);
+  --foreground: var(--color-content-primary);
+  --popover: var(--color-surface-raised);
+  --popover-foreground: var(--color-content-primary);
+  --primary: var(--color-action-primary);
+  --primary-foreground: var(--color-content-on-action);
+  --secondary: var(--color-surface-sunken);
+  --secondary-foreground: var(--color-content-primary);
+  --muted: var(--color-surface-sunken);
+  --muted-foreground: var(--color-content-tertiary);
+  --accent: var(--color-action-subtle);
+  --accent-foreground: var(--color-action-primary-hover);
+  --destructive: var(--color-status-risk-content);
+  --border: var(--color-border-subtle);
+  --input: var(--color-border-control);
+  --ring: var(--color-action-focus-ring);
+  --radius: var(--radius-control);
+}

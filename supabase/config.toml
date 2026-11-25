@@ -1,0 +1,20 @@
+[functions.engine-advance]
+verify_jwt = true
+
+[functions.interview-turn]
+verify_jwt = true
+
+[functions.evaluate-session]
+verify_jwt = true
+
+[functions.autopsy]
+verify_jwt = true
+
+[functions.delete-account]
+verify_jwt = true
+
+[functions.cron-maintenance]
+verify_jwt = false
+
+[functions.weekly-calibration]
+verify_jwt = false
